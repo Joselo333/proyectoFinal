@@ -24,8 +24,10 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
-        <a class="btn btn-outline-light" aria-current="page" href="inicio.html">Inicio</a>
+        <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
+        &nbsp&nbsp
         <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+        &nbsp&nbsp
         <a class="btn btn-outline-light" href="login.php">Login</a>
       </div>
     </div>
@@ -73,7 +75,7 @@
                   </div>
 
                   <a class="small text-muted" href="#!">¿Olvidaste contraseña?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">¿No tienes cuenta? <a href="#!" style="color: #393f81;">Registrate</a></p>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">¿No tienes cuenta? <a href="registro.php" style="color: #393f81;">Registrate</a></p>
                   <a href="#!" class="small text-muted">Terms of use.</a>
                   <a href="#!" class="small text-muted">Privacy policy</a>
                 </form>

@@ -2,36 +2,6 @@ body{
     padding: 0;
     margin: 0;
 }
-.fondo-body{
-    background: hsla(0, 0%, 100%, 1);
-
-    background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 53%, 0.4) 39%, hsla(0, 0%, 0%, 1) 97%);
-
-    background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 53%, 0.4) 39%, hsla(0, 0%, 0%, 1) 97%);
-
-    background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 53%, 0.4) 39%, hsla(0, 0%, 0%, 1) 97%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#878787", GradientType=1 );
-}
-.fondo-container{
-    background: hsla(0, 0%, 97%, 1);
-
-    background: linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-    background: -moz-linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-    background: -webkit-linear-gradient(90deg, hsla(0, 0%, 97%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F8F8F8", endColorstr="#F4F4F4", GradientType=1 );
-}
-.fondo-instagram{
-    background: hsla(333, 100%, 53%, 1);
-
-    background: linear-gradient(225deg, hsla(333, 100%, 53%, 1) 0%, hsla(56, 93%, 57%, 1) 100%);
-
-    background: -moz-linear-gradient(225deg, hsla(333, 100%, 53%, 1) 0%, hsla(56, 93%, 57%, 1) 100%);
-
-    background: -webkit-linear-gradient(225deg, hsla(333, 100%, 53%, 1) 0%, hsla(56, 93%, 57%, 1) 100%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF0F7B", endColorstr="#F7EA2A", GradientType=1 );
+.body-background{
+    background-color: #ffffeb;
 }

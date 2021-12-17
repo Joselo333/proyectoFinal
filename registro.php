@@ -11,133 +11,113 @@
 <html lang="es">
     <head>
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="icon" href="..." type="image/x-icon" />
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-        <!-- Google Fonts Roboto -->
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-        />
-        <!-- MDB -->
-        <link rel="stylesheet" href="css/mdb.min.css" />
-        <link rel="icon" href="img/icono_pestaña.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
+    <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+    <link rel="stylesheet" href="css/inicio.css">
         
     
         <title>Registro</title>
       </head>
 
-<body>
-<div >
-    <!-- Navbar -->
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+<body class="body-background">
+<div>
+    <!--barra navegación-->
+  <div class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"> 
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
-          <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
-          </svg> MarketPlace</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="nosotros.html">Nosotros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="login.html">Login</a>
-            </li>
-
-          </ul>
-
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="login.php">Login</a>
+          </div>
         </div>
       </div>
     </nav>
-
-    <!-- Navbar -->
-    <div style="margin-top:10px"></div>
-    <h5 class="display-1 text-dark text-center">Registro</h5>
-    <div style="margin-top:10px"></div>
-  
+  </div>
+  <br>
+  <!--Fin barra de navegacion-->
 
     <!--Formulario-->
-    <div class="container border-primary shadow p-3 mb-5 bg-body rounded">
+    <div class="container shadow p-3 mb-5 rounded bg-white mt-5">
       <div class="row">
-        <div class="col">
+        <h5 class="display-1 text-dark text-center">Registro</h5>
+        <div class="col-3"></div>
+        <div class="col-6">
           <form action="insertar.php" method="POST">
-              <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
-                  <input type="text" class="form-control" id="apellidos" name="apellidos">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">RUT:</label>
-                  <input type="text" class="form-control" id="rut" name="rut">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Usuario:</label>
-                  <input type="text" class="form-control" id="usuario" name="usuario">
-                </div> 
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-                  <input type="password" class="form-control" id="contraseña" name="contraseña">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Dirección:</label>
-                  <input type="text" class="form-control" id="direccion" name="direccion">
-                </div>
-               
-                <div class="mb-3">
-                  <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Masculino
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Femenino
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Otro
-                  </label>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
-                  <input type="date" class="form-control" id="nacimiento" name="nacimiento">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Edad:</label>
-                  <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
-                </div>
-                
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-              </div>
-            
-             
-          <input type="submit" class="btn btn-black" value="Guardar">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
+              <input type="text" class="form-control" id="apellidos" name="apellidos">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">RUT:</label>
+              <input type="text" class="form-control" id="rut" name="rut">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usuario" name="usuario">
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="contraseña" name="contraseña">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Dirección:</label>
+              <input type="text" class="form-control" id="direccion" name="direccion">
+            </div>
+            <div class="mb-3">
+              <label for="flexRadioDefault1" class="form-label">Sexo:</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Masculino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Femenino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Otro
+              </label>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Edad:</label>
+              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
+            </div>  
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -183,8 +163,6 @@
     <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
   </symbol>
 </svg>
-
-<div style="margin-top:5px"></div>
 </body>
 
  <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -18,10 +18,7 @@ if($filas){
     header("Location: index.html");
 
 }else{
-    ?>
-    <?php
-    include("index.php");
-
-  ?>
-  <?php
+  
+  echo "<script> alert ('Usuario no existe'); window.location='login.php' </script>";
 }
+?>
