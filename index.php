@@ -29,7 +29,7 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form action="validar.php" method="get">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <img src="img/icono_pestaña.png" width="32" height="32"> 
@@ -39,17 +39,17 @@
                   <h5 class="fw-bolder mb-3 pb-3" style="letter-spacing: 1px;">Iniciar sesión</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"/>
                     <label class="form-label" for="form2Example17">Correo electrónico</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="123456789" />
                     <label class="form-label" for="form2Example27">Contraseña</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Entrar</button>
+                    <input class="btn btn-dark btn-lg btn-block" type="submit"></input>
                   </div>
 
                   <a class="small text-muted" href="#!">¿Olvidaste contraseña?</a>
