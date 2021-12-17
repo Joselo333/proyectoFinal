@@ -1,3 +1,12 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+
+    $sql="SELECT *  FROM formulario";
+    $query=mysqli_query($con,$sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -21,11 +30,11 @@
         <link rel="icon" href="img/icono_pestaña.png">
         
     
-        <title>Nosotros</title>
+        <title>Registro</title>
       </head>
 
 <body>
-<div style="background-color: #FFF1EB;">
+<div >
     <!-- Navbar -->
 
 
@@ -44,10 +53,10 @@
               <a class="nav-link " aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="nosotros.html">Nosotros</a>
+              <a class="nav-link " href="nosotros.html">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link active" href="login.html">Login</a>
             </li>
 
           </ul>
@@ -58,96 +67,90 @@
 
     <!-- Navbar -->
     <div style="margin-top:10px"></div>
-    <h1 class="display-1 text-dark text-center">This is Us</h1>
+    <h5 class="display-1 text-dark text-center">Registro</h5>
     <div style="margin-top:10px"></div>
-    <!--Cards-->
   
 
-    <!--Cuerpo-->
-
-    <div class="container text-center fondo-container p-5 vm-100">
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+    <!--Formulario-->
+    <div class="container border-primary shadow p-3 mb-5 bg-body rounded">
+      <div class="row">
         <div class="col">
-          <div class="card">
-            <img
-              src="https://mdbootstrap.com/img/new/standard/city/041.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://mdbootstrap.com/img/new/standard/city/042.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://mdbootstrap.com/img/new/standard/city/043.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:10px"></div>
+          <form action="insertar.php" method="POST">
+              <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
+                  <input type="text" class="form-control" id="apellidos" name="apellidos">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">RUT:</label>
+                  <input type="text" class="form-control" id="rut" name="rut">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Usuario:</label>
+                  <input type="text" class="form-control" id="usuario" name="usuario">
+                </div> 
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+                  <input type="password" class="form-control" id="contraseña" name="contraseña">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Dirección:</label>
+                  <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+               
+                <div class="mb-3">
+                  <label for="flexRadioDefault1" class="form-label">Sexo:</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Masculino
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Femenino
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Otro
+                  </label>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
+                  <input type="date" class="form-control" id="nacimiento" name="nacimiento">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Edad:</label>
+                  <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
+                </div>
+                
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+              </div>
+            
+             
+          <input type="submit" class="btn btn-black" value="Guardar">
 
-      <div class="container">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Suscríbete a la Newsletter de MarketPlace</span>
-          <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1">
-          <button type="button" class="btn btn-primary btn-rounded">Enviar</button>
-        </div>
 
-        
-      </div>
 
-    </div>
 
-<div style="margin-top:5px"></div>
 
+
+         
+
+
+
+
+
+    
 <!-- Footer -->
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
