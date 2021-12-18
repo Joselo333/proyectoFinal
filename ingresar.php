@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión</title>
+  <title>Ingresar</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
   <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -54,26 +54,75 @@
 
 
   <br><br><br><br>
-  <div class="container shadow p-3 mb-5 bg-body rounded">
-
-    
-    <div class="row justify-content-md-center">
-     
-      <div class="col-md-auto">
-        
-        <h1>Sistema de Gestión</h1><br><br><br><br><br>
+  <!--Formulario-->
+  <div class="container shadow p-3 mb-5 rounded bg-white mt-5">
+      <div class="row">
+        <h5 class="display-1 text-dark text-center">Ingreso</h5>
+        <div class="col-3"></div>
+        <div class="col-6">
+          <form action="insertar.php" method="POST">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
+              <input type="text" class="form-control" id="apellidos" name="apellidos">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">RUT:</label>
+              <input type="text" class="form-control" id="rut" name="rut">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usuario" name="usuario">
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="contraseña" name="contraseña">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Dirección:</label>
+              <input type="text" class="form-control" id="direccion" name="direccion">
+            </div>
+            <div class="mb-3">
+              <label for="flexRadioDefault1" class="form-label">Sexo:</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Masculino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Femenino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Otro
+              </label>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Edad:</label>
+              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
+            </div>  
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+            </div>
+            <button type="submit" class="btn btn-secondary">Guardar</button>
+            <a href="gestion.html" class="btn btn-secondary">Volver</a>
+          </form>
+        </div>
       </div>
-      
-    </div>
-
-    <div class="row justify-content-md-center">
-     
-      <div class="col-md-auto">
-        
-        <a class="btn btn-secondary" href="ingresar.php">Ingresar</a>
-        <a class="btn btn-secondary" href="login.php">Editar</a>
-      </div>
-      
     </div><br><br><br><br><br>
 
   </div><br><br>

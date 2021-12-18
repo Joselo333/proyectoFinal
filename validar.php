@@ -15,7 +15,7 @@ $filas=mysqli_num_rows($resultado);
 
 if($filas){
   
-    header("Location: index.html");
+    header("Location: gestion.html");
 
 }else{
   
