@@ -10,11 +10,15 @@
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
     <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body class="body-background">
     <!--barra navegación-->
-  <div class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+  <div class="fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light " >
       <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,59 +40,137 @@
   <!--Fin barra de navegacion-->
   <div class="container" >
     <div class="row">
-      <header class="col-12 my-5">
-          <div id="carruselheader" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="https://picsum.photos/1000/200" class="d-block w-100" alt="header">
+      <div class="col-1 my-5 d-flex align-items-center justify-content-center previo" data-bs-target="#carruselheader" data-bs-slide="prev" type="button">
+        <i class="bi bi-chevron-left"></i>
+      </div>
+      <header class="col-10 my-5 carrusel">
+        <p class="text-center p-titulo-small"><i class="bi bi-star-fill"></i> Recomendaciones para ti <i class="bi bi-star-fill"></i></p>        
+          <div id="carruselheader" class="carousel slide" data-bs-interval="false">
+              <div class="carousel-inner ">
+                <div class="carousel-item active p-3">
+                  <div class="row row-cols-2 g-4 d-flex align-items-center">
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/1_local1.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Churrasco italiano</h5>
+                              <p class="card-text ">Churrasco con tomate, palta y mayonesa, más de regalo porción de papas fritas, de acuerdo a stock disponible.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/1_local2.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Bolitas de arroz</h5>
+                              <p class="card-text">Bolitas de arroz rellenas de pollo, cebollin y queso crema envuelto y frito en un crujiente panko. Sujeto a stock del local.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="carousel-item">
-                  <img src="https://picsum.photos/1000/200" class="d-block w-100" alt="header">
+                <div class="carousel-item p-3">
+                  <div class="row row-cols-2 g-4 d-flex align-items-center">
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/1_local3.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Waffle frutioreo</h5>
+                              <p class="card-text ">Nutella, salsa ácida, galletas Oreo y crema chantilly.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/2_local2.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Avocado Tori</h5>
+                              <p class="card-text">Rolls envuelto en Palta de relleno pollo teriyaki ,queso crema ,cebollin un rolls clasico del sushi.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="carousel-item">
-                  <img src="https://picsum.photos/1000/200" class="d-block w-100" alt="header">
+                <div class="carousel-item p-3">
+                  <div class="row row-cols-2 g-4 d-flex align-items-center">
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/2_local1.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Ave italiano</h5>
+                              <p class="card-text ">Pasta de ave, tomate, palta, y mayonesa.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card card-header mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="img/2_local3.png" class="img-fluid rounded-start img-carrusel" alt="...">
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body text-center">
+                              <h5 class="card-title-carrusel">Waffle strawberry</h5>
+                              <p class="card-text">Nutella, manjar, frutilla, plátano y crema chantilly.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carruselheader" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carruselheader" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
       </header>
-      <section>
+      <div class="col-1 my-5 d-flex align-items-center justify-content-center siguiente" type="button" data-bs-target="#carruselheader" data-bs-slide="next">
+        <i class="bi bi-chevron-right"></i>
+      </div>
+      <section class="text-center">
+        <p class="p-titulo-big">Tiendas recomendadas...</p>
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
           <div class="col">
-            <div class="card">
-              <img src="https://picsum.photos/100/100" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam at minus ea accusantium quas neque quis tempora, aut exercitationem! Officiis ratione architecto unde in, ipsa temporibus tempora eaque nihil est!</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
+            <div class="card card-tienda">
+              <img src="img/icon_local1.png" class="card-img-top img-card-tienda" alt="...">
             </div>
           </div>
           <div class="col">
-            <div class="card">
-              <img src="https://picsum.photos/100/100" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus nostrum repudiandae cumque ratione, blanditiis totam earum nobis dicta illum voluptas error cum aut ipsa eius libero similique autem quia? Velit.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
+            <div class="card card-tienda">
+              <img src="img/icon_local2.png" class="card-img-top img-card-tienda" alt="...">
             </div>
           </div>
           <div class="col">
-            <div class="card">
-              <img src="https://picsum.photos/100/100" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa ab, modi, quod illo provident sed ullam aut laudantium dolor id aliquam ea reiciendis, eveniet ducimus repellat molestiae commodi magni! Ducimus.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
+            <div class="card card-tienda">
+              <img src="img/icon_local3.png" class="card-img-top img-card-tienda" alt="...">
             </div>
           </div>
         </div>

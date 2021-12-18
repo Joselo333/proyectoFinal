@@ -19,6 +19,6 @@ if($filas){
 
 }else{
   
-  echo "<script> alert ('Usuario no existe'); window.location='login.php' </script>";
+  echo "<script> alert ('Las credenciales ingresadas no son validas. Por favor vuelva a intentarlo.'); window.location='login.php' </script>";
 }
 ?>
