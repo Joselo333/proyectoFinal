@@ -1,8 +1,9 @@
 <?php 
     include("conexion.php");
     $con=conectar();
-    $id=$_GET['ID'];
-    $sql="SELECT *  FROM formulario WHERE ID='$id'";
+    $id=$_GET['id']; 
+
+    $sql="SELECT *  FROM formulario WHERE ID ='$id' ";
     $query=mysqli_query($con,$sql);
 ?>
 
@@ -47,12 +48,13 @@
   <!--Fin barra de navegacion-->
 
     <!--Formulario-->
+    
     <div class="container shadow p-3 mb-5 rounded bg-white mt-5">
       <div class="row">
         <h5 class="display-1 text-dark text-center">Actualiza tus datos</h5>
         <div class="col-3"></div>
         <div class="col-6">
-            <?php 
+                    <?php 
                         while($row=mysqli_fetch_array($query)){
                     ?>
           <form action="update.php" method="POST">
@@ -83,7 +85,7 @@
             </div>
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-            </div>
+            
             <select class="form-select" name="sexo" id="state" >
                 <option selected="true"><?php  echo $row['sexo']?></option>
                 <option>Masculino</option>
@@ -105,6 +107,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
+          </div>
             <?php
                         }
             ?>
