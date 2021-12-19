@@ -1,0 +1,24 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.body-background{
+    background-color: #F0F3F5;
+}
+.table-head{
+    color: #442220;
+}
+.table-container{
+    border: solid rgba(255, 255, 255, 0.5) 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    backdrop-filter: blur(20px);  
+}
+.editar-icon{
+    color: #007753b6;
+}
+
+.eliminar-icon{
+    color: #ff0d00;
+}

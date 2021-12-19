@@ -10,6 +10,8 @@ $sql="DELETE FROM formulario  WHERE ID='$ID'";
 $query=mysqli_query($con,$sql);
 
     if($query){
-        Header("Location: buscar.php");
+        echo "<script> alert ('Se elimino correctamente el usuario.'); window.location='buscar.php' </script>";
+    }else {
+        echo "<script> alert ('No se elimino el usuario.'); window.location='buscar.php' </script>";
     }
 ?>

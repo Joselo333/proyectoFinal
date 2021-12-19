@@ -22,8 +22,8 @@ body{
     background-color: transparent;
 }
 .card-header{
-    border: solid rgba(250, 250, 250, 0.1) 1px;
-    background-color: rgba(250, 250, 250, 0.5);
+    border: solid rgba(255, 255, 255, 0.5) 1px;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px 10px 10px 10px ;
     color: #967D69;
     min-height: 250px;
@@ -76,7 +76,7 @@ body{
 }
 .img-card-tienda{
     color: #ffffff;
-    background-color: #000000;
+    background-color: #ffffff;
     z-index: 1;
     clip-path: circle(41.9% at 50% 50%);
     transition: clip-path 1.5s;

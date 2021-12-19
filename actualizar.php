@@ -1,10 +1,9 @@
 <?php 
     include("conexion.php");
     $con=conectar();
-
-    $sql="SELECT *  FROM formulario";
+    $id=$_GET['ID'];
+    $sql="SELECT *  FROM formulario WHERE ID='$id'";
     $query=mysqli_query($con,$sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +19,6 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
     <link rel="stylesheet" href="css/inicio.css">
     <title>Registro</title>
-    <script>
-            function obtenerFecha(e)
-            {
-
-                var fecha = moment(e.value);
-                console.log("Fecha original:" + e.value);
-                console.log("Fecha formateada es: " + fecha.format("DD/MM/YYYY"));
-            }
-        </script>
   </head>
 
 <body class="body-background">
@@ -59,58 +49,65 @@
     <!--Formulario-->
     <div class="container shadow p-3 mb-5 rounded bg-white mt-5">
       <div class="row">
-        <h5 class="display-1 text-dark text-center">Registro</h5>
+        <h5 class="display-1 text-dark text-center">Actualiza tus datos</h5>
         <div class="col-3"></div>
         <div class="col-6">
-          <form action="insertar.php" method="POST">
+            <?php 
+                        while($row=mysqli_fetch_array($query)){
+                    ?>
+          <form action="update.php" method="POST">
+            <input type="hidden" value="<?php  echo $row['ID']?>" name="ID">
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Nombre:</label>
-              <input type="text" class="form-control" id="nombre" name="nombre">
+              <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $row['nombre']?>">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
-              <input type="text" class="form-control" id="apellidos" name="apellidos" >
+              <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $row['apellidos']?>">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">RUT:</label>
-              <input type="text" class="form-control" id="rut" name="rut">
+              <input type="text" class="form-control" id="rut" name="rut" value="<?php echo $row['rut']?>">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Usuario:</label>
-              <input type="text" class="form-control" id="usuario" name="usuario">
+              <input type="text" class="form-control" id="usuario" name="usuario" value="<?php echo $row['usuario']?>">
             </div> 
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="contraseña" name="contraseña">
+              <input type="password" class="form-control" id="contraseña" name="contraseña" value="<?php echo $row['contraseña']?>">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Dirección:</label>
-              <input type="text" class="form-control" id="direccion" name="direccion">
+              <input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $row['direccion']?>">
             </div>
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-              <select class="form-select" name="sexo" id="state" >
-                <option selected="true">Seleccione Genero</option>
+            </div>
+            <select class="form-select" name="sexo" id="state" >
+                <option selected="true"><?php  echo $row['sexo']?></option>
                 <option>Masculino</option>
                 <option>Femenino</option>
                 <option>Otro</option>
-              </select>
+            </select>
             </div>
-            
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
-              <input type="date" class="form-control" onchange="obtenerFecha(this)" id="nacimiento" name="nacimiento">
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" value="<?php echo $row['nacimiento']?>">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Edad:</label>
-              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
+              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad" value="<?php echo $row['edad']?>">
             </div>  
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" value="<?php echo $row['email']?>">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
+            <?php
+                        }
+            ?>
         </div>
       </div>
     </div>
