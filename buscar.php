@@ -36,8 +36,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+              <a class="btn btn-outline-light" aria-current="page" href="gestion.html"><</a>&nbsp&nbsp
               <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
-              &nbsp&nbsp
+              
+              
             </div>
           </div>
         </div>

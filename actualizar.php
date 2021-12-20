@@ -25,25 +25,37 @@
 <body class="body-background">
 <div>
     <!--barra navegación-->
-  <div class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
-      <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
-            &nbsp&nbsp
-            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
-            &nbsp&nbsp
-            <a class="btn btn-outline-light" href="login.php">Login</a>
-          </div>
+    <!-- Navbar -->
+    <div class="fixed-top"><nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="btn btn-outline-light" aria-current="page" href="buscar.php"><</a>&nbsp&nbsp
+          <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
+          &nbsp&nbsp
+          
         </div>
       </div>
-    </nav>
-  </div>
+    </div>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+         
+      <li class="nav-item">
+        <a class="nav-link active text-white" href="#">Actualizar&nbsp&nbsp&nbsp&nbsp</a>
+      </li>
+      <li class="nav-item">
+        <img src="img/login_usuario.png" width="40" height="40" >
+      </li>
+      <li class="nav-item">
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      </li>
+
+    </ul>
+  </nav>
+</div>
   <br>
   <!--Fin barra de navegacion-->
 
