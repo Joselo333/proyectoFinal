@@ -10,7 +10,6 @@ $contraseña=$_POST['contraseña'];
 $direccion=$_POST['direccion'];
 $sexo=$_POST['sexo'];
 $nacimiento=$_POST['nacimiento'];
-$edad=$_POST['edad'];
 $email=$_POST['email'];
 $ID=$_POST['ID'];
 

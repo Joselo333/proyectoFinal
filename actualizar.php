@@ -34,7 +34,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
+            <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
             &nbsp&nbsp

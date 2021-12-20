@@ -2,7 +2,7 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT * FROM formulario";
+    $sql="SELECT nombre, apellidos, rut ,usuario, contraseña, direccion, sexo, DATE_FORMAT(fecha_nac, '%d-%m-%Y'), sexo,extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email FROM formulario";
     $query=mysqli_query($con,$sql);
 
     $row=mysqli_fetch_array($query);
@@ -96,7 +96,7 @@
                     if(isset($_GET['enviar'])){
                         $busqueda=$_GET['busqueda'];
                         $id=$_GET['ID'];
-                        $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
+                        $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda' or ");
 
                         while($row=$consulta->fetch_array()){
                             echo $row['nombre'];

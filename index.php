@@ -1,3 +1,13 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+
+    $sql="SELECT * FROM tiendas";
+    $query=mysqli_query($con,$sql);
+    $sql1="SELECT * FROM productos";
+    $query1=mysqli_query($con,$sql1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +37,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
+            <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
             &nbsp&nbsp
@@ -39,6 +49,7 @@
   </div>
   <br>
   <!--Fin barra de navegacion-->
+ 
   <div class="container" >
     <div class="row">
       <div class="col-1 my-5 d-flex align-items-center justify-content-center previo" data-bs-target="#carruselheader" data-bs-slide="prev" type="button">
@@ -156,34 +167,24 @@
       <div class="col-1 my-5 d-flex align-items-center justify-content-center siguiente" type="button" data-bs-target="#carruselheader" data-bs-slide="next">
         <i class="bi bi-chevron-right"></i>
       </div>
-      <section class="text-center">
+      <section class="text-center row">
         <p class="p-titulo-big">Tiendas recomendadas...</p>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-          <div class="col">
-            <div class="card card-tienda">
-              <img src="img/icon_local1.png" class="card-img-top img-card-tienda" alt="...">
-              <div class="card-img-overlay overlay-tienda d-flex align-items-center justify-content-center">
-                <p class="text-center p-overlay">EL MORDISCO</p>
+        <?php
+          while($row=mysqli_fetch_array($query)){
+        ?>
+          <div class="col-4 p-3">
+            <a href="tienda.php?id=<?php echo $row['id']?>" class="p-overlay text-deoration-none link-dark">
+              <div class="card card-tienda">
+                <img src=<?php echo $row['img_tienda'] ?> class="card-img-top img-card-tienda" alt="...">
+                <div class="card-img-overlay overlay-tienda d-flex align-items-center justify-content-center">
+                  <p class="text-center p-overlay"><?php echo $row['nombre_tienda'] ?></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col">
-            <div class="card card-tienda">
-              <img src="img/icon_local2.png" class="card-img-top img-card-tienda" alt="...">
-              <div class="card-img-overlay overlay-tienda d-flex align-items-center justify-content-center">
-                <p class="text-center p-overlay">KIRU SUSHI</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card card-tienda">
-              <img src="img/icon_local3.png" class="card-img-top img-card-tienda" alt="...">
-              <div class="card-img-overlay overlay-tienda d-flex align-items-center justify-content-center">
-                <p class="text-center p-overlay">BUBBLE WAFFLES</p>
-              </div>
-          </div>
-        </div>
-        </div>
+        <?php
+          }
+        ?>
         <div class="row row-cols-1 g-4 mb-5">
           <div class="col mb-5">
             <div class="card">
@@ -229,8 +230,7 @@
         </symbol>
       </svg>
   </div>
-
-
+ 
 
 
 

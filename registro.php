@@ -43,7 +43,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.html">Inicio</a>
+            <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
             &nbsp&nbsp
@@ -65,31 +65,31 @@
           <form action="insertar.php" method="POST">
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Nombre:</label>
-              <input type="text" class="form-control" id="nombre" name="nombre">
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
-              <input type="text" class="form-control" id="apellidos" name="apellidos" >
+              <input type="text" class="form-control" id="apellidos" name="apellidos" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">RUT:</label>
-              <input type="text" class="form-control" id="rut" name="rut">
+              <input type="text" class="form-control" id="rut" name="rut" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Usuario:</label>
-              <input type="text" class="form-control" id="usuario" name="usuario">
+              <input type="text" class="form-control" id="usuario" name="usuario" required>
             </div> 
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="contraseña" name="contraseña">
+              <input type="password" class="form-control" id="contraseña" name="contraseña" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Dirección:</label>
-              <input type="text" class="form-control" id="direccion" name="direccion">
+              <input type="text" class="form-control" id="direccion" name="direccion" required>
             </div>
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-              <select class="form-select" name="sexo" id="state" >
+              <select class="form-select" name="sexo" id="state"  required>
                 <option selected="true">Seleccione Genero</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
@@ -99,15 +99,11 @@
             
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
-              <input type="date" class="form-control" onchange="obtenerFecha(this)" id="nacimiento" name="nacimiento">
+              <input type="date" class="form-control" onchange="obtenerFecha(this)" id="nacimiento" name="nacimiento"  required>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Edad:</label>
-              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
-            </div>  
-            <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
