@@ -23,7 +23,7 @@ body{
 }
 .card-header{
     border: solid rgba(255, 255, 255, 0.5) 1px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.301);
     border-radius: 10px 10px 10px 10px ;
     color: #967D69;
     min-height: 250px;

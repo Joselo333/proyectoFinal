@@ -24,3 +24,30 @@ body{
     height: 300px;
     clip-path: circle(41.9% at 50% 50%);
 }
+.img-item{
+    width: 200px;
+    height: 200px;
+}
+.card-item{
+    min-height: 200px;
+    width: 430px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: solid rgba(255, 255, 255, 0.5) 1px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px 10px 10px 10px ;
+    color: #967D69;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+.container-card-item{
+    border: solid rgba(255, 255, 255, 0.5) 1px;
+    background-color: rgba(255, 255, 255, 0.068);
+    border-radius: 10px 10px 10px 10px ;
+    color: #967D69;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    padding: 100px;
+}

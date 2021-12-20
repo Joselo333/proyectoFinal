@@ -65,6 +65,30 @@
           }
         ?>
     </div>
+    <div class="row container-card-item">
+        <?php
+            while($row=mysqli_fetch_array($query1)){
+        ?>
+            <div class="col-6">
+                <div class="card card-item mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src=<?php echo $row['img_item']?> class="img-fluid img-item rounded-start">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center d">
+                              <h5 class="card-title-carrusel p-titulo-small"><?php echo $row['nombre_item']?></h5>
+                              <br>
+                              <p class="card-text p-titulo-small"><?php echo $row['precio_item']?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            ?>
+    </div>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
