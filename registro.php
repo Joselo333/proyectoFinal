@@ -91,9 +91,9 @@
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
               <select class="form-select" name="sexo" id="state" >
                 <option selected="true">Seleccione Genero</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-                <option>Otro</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
               </select>
             </div>
             

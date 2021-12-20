@@ -86,7 +86,7 @@
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
             
-            <select class="form-select" name="sexo" id="state" >
+            <select class="form-select" name="sexo" id="sexo" >
                 <option selected="true"><?php  echo $row['sexo']?></option>
                 <option>Masculino</option>
                 <option>Femenino</option>

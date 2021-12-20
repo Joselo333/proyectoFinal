@@ -15,7 +15,7 @@ $edad=$_POST['edad'];
 $email=$_POST['email'];
 $ID=$_POST['ID'];
 
-$sql="UPDATE formulario SET  rut='$rut',nombre='$nombre',usuario='$usuario',direccion='$direccion',email='$email',edad='$edad',apellidos='$apellidos' WHERE ID='$ID'";
+$sql="UPDATE formulario SET  rut='$rut',nombre='$nombre',usuario='$usuario',direccion='$direccion',sexo='$sexo',email='$email',edad='$edad',apellidos='$apellidos' WHERE ID='$ID'";
 $query=mysqli_query($con,$sql);
 
     if($query){
