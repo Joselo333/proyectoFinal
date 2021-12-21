@@ -8,14 +8,14 @@ $_SESSION['email']=$email;
 
 
 
-$consulta="SELECT*FROM formulario where email='$email' and contraseña='$contraseña'";
+$consulta="SELECT * FROM formulario where email='$email' and contraseña='$contraseña'";
 $resultado=mysqli_query($con,$consulta);
 
 $filas=mysqli_num_rows($resultado);
 
 if($filas){
   
-    header("Location: gestion.html");
+    header("Location: gestion.php?email=$email");
 
 }else{
   

@@ -1,3 +1,11 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+
+    $sql="SELECT *  FROM formulario";
+    $query=mysqli_query($con,$sql);
+    $row=mysqli_fetch_array($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +18,7 @@
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="../css/inicio.css">
 
 <body style="background-color: #ffffeb;">
 
@@ -24,13 +32,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
-        <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
+        <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
         &nbsp&nbsp
-        <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+        <a class="btn btn-outline-light" href="../nosotros.html">Nosotros</a>
         &nbsp&nbsp
         <a class="btn btn-outline-light" href="login.php">Login</a>
         &nbsp&nbsp
-            <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
+            <a class="btn btn-outline-light" href="../checkout.html">Mi carro</a>
       </div>
     </div>
   </div>
@@ -52,7 +60,7 @@
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
-
+                
                 <form action="validar.php" method="get">
 
                   <div class="d-flex align-items-center mb-3 pb-1">

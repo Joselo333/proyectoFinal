@@ -18,7 +18,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="../css/inicio.css">
     <title>Registro</title>
   </head>
 
@@ -47,7 +47,7 @@
         <a class="nav-link active text-white" href="#">Actualizar&nbsp&nbsp&nbsp&nbsp</a>
       </li>
       <li class="nav-item">
-        <img src="img/login_usuario.png" width="40" height="40" >
+        <img src="../img/login_usuario.png" width="40" height="40" >
       </li>
       <li class="nav-item">
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -109,10 +109,6 @@
               <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
               <input type="date" class="form-control" id="nacimiento" name="nacimiento" value="<?php echo $row['nacimiento']?>">
             </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Edad:</label>
-              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad" value="<?php echo $row['edad']?>">
-            </div>  
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email:</label>
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" value="<?php echo $row['email']?>">

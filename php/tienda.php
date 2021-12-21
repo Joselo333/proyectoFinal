@@ -19,7 +19,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="css/tiendas.css">
+    <link rel="stylesheet" href="../css/tiendas.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,9 +37,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="../nosotros.html">Nosotros</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="login.php">Login</a>
           </div>
@@ -66,6 +66,7 @@
         ?>
     </div>
     <div class="row container-card-item">
+      
         <?php
             while($row=mysqli_fetch_array($query1)){
         ?>

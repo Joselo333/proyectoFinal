@@ -11,14 +11,16 @@ $contraseña=$_POST['contraseña'];
 $direccion=$_POST['direccion'];
 $sexo=$_POST['sexo'];
 $nacimiento=$_POST['nacimiento'];
-$edad=$_POST['edad'];
 $email=$_POST['email'];
 $ID=$_POST['ID'];
 
-$sql="UPDATE formulario SET  rut='$rut',nombre='$nombre',usuario='$usuario',direccion='$direccion',sexo='$sexo',email='$email',edad='$edad',apellidos='$apellidos' WHERE ID='$ID'";
+$sql="UPDATE formulario SET  rut='$rut',nombre='$nombre',usuario='$usuario',direccion='$direccion',sexo='$sexo',email='$email',apellidos='$apellidos' WHERE ID='$ID'";
 $query=mysqli_query($con,$sql);
 
     if($query){
         Header("Location: buscar.php");
+    }else {
+        echo "<script> alert ('Ese Rut/Usuario/Email ya esta/n registrado/s.'); window.location='actualizar.php?id=$ID' </script>";
     }
+    
 ?>

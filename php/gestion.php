@@ -1,15 +1,22 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+    $email=$_GET['email'];
+    $sql="SELECT * FROM formulario WHERE email LIKE '$email' ";
+    $query=mysqli_query($con,$sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingresar</title>
+  <title>Gestión</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
   <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-  <link rel="icon" href="img/icono_pestaña.png">
+  <link rel="icon" href="../img/icono_pestaña.png">
 
 </head>
 <body >
@@ -22,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="btn btn-outline-light" aria-current="page" href="gestion.html"><</a>&nbsp&nbsp
+          
           <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
           &nbsp&nbsp
           
@@ -32,10 +39,14 @@
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
          
       <li class="nav-item">
-        <a class="nav-link active text-white" href="#">Ingresar&nbsp&nbsp&nbsp&nbsp</a>
+        <?php 
+          while($row=mysqli_fetch_array($query)){
+        ?>
+        <a class="nav-link active text-white" href="user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
+        
       </li>
       <li class="nav-item">
-        <img src="img/login_usuario.png" width="40" height="40" >
+        <img src="../img/login_usuario.png" width="40" height="40" >
       </li>
       <li class="nav-item">
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -54,75 +65,31 @@
 
 
   <br><br><br><br>
-  <!--Formulario-->
-  <div class="container shadow p-3 mb-5 rounded bg-white mt-5">
-      <div class="row">
-        <h5 class="display-1 text-dark text-center">Ingreso</h5>
-        <div class="col-3"></div>
-        <div class="col-6">
-          <form action="insertar.php" method="POST">
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Nombre:</label>
-              <input type="text" class="form-control" id="nombre" name="nombre">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
-              <input type="text" class="form-control" id="apellidos" name="apellidos">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">RUT:</label>
-              <input type="text" class="form-control" id="rut" name="rut">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Usuario:</label>
-              <input type="text" class="form-control" id="usuario" name="usuario">
-            </div> 
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="contraseña" name="contraseña">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Dirección:</label>
-              <input type="text" class="form-control" id="direccion" name="direccion">
-            </div>
-            <div class="mb-3">
-              <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Masculino
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Femenino
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Otro
-              </label>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
-              <input type="date" class="form-control" id="nacimiento" name="nacimiento">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Edad:</label>
-              <input type="number" class="form-control" id="Edad"  min="1" max="100" name="edad">
-            </div>  
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-            </div>
-            <button type="submit" class="btn btn-secondary">Guardar</button>
-            <a href="gestion.html" class="btn btn-secondary">Volver</a>
-          </form>
-        </div>
+  <div class="container shadow p-3 mb-5 bg-body rounded">
+
+    
+    <div class="row justify-content-md-center">
+     
+      <div class="col-md-auto text-center">
+        
+        <h1>Bienvenido, <?php echo $row['nombre']?>   <?php echo $row['apellidos']?> </h1>
+        
+        <h2>al</h2>
+        <h2>Sistema de Gestión</h1><br><br><br>
       </div>
+      
+    </div>
+
+    <div class="row justify-content-md-center">
+     
+      <div class="col-md-auto">
+        
+        <a class="btn btn-secondary" href="ingresar.php?email=<?php echo $row['email']?>">Ingresar</a>
+        <a class="btn btn-secondary" href="buscar.php">Editar</a>
+      </div>
+      <?php
+          }
+        ?>
     </div><br><br><br><br><br>
 
   </div><br><br>

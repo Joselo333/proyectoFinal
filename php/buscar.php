@@ -2,13 +2,11 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT nombre, apellidos, rut ,usuario, contraseña, direccion, sexo, DATE_FORMAT(fecha_nac, '%d-%m-%Y'), sexo,extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email FROM formulario";
+    $sql="SELECT nombre, apellidos, rut, usuario, contraseña, direccion, sexo, DATE_FORMAT(nacimiento, '%d-%m-%Y') as nacimiento, sexo, extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email, ID FROM formulario";
     $query=mysqli_query($con,$sql);
-
-    $row=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +16,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="css/buscar.css">
+    <link rel="stylesheet" href="../css/buscar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +46,7 @@
             <a class="nav-link active text-white" href="#">Editar&nbsp&nbsp&nbsp&nbsp</a>
           </li>
           <li class="nav-item">
-            <img src="img/login_usuario.png" width="40" height="40" >
+            <img src="../img/login_usuario.png" width="40" height="40" >
           </li>
           <li class="nav-item">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -65,10 +63,11 @@
             <form action="" method="get">
               <div class="row">
                 <div class="col-8 mb-3">
-                  <input type="text" class="form-control text-center" id="nombre" name="busqueda" placeholder="Rut/Nombre/Apellido/Email/Sexo/Edad">
+                  <input type="text" class="form-control text-center" id="nombre" name="busqueda" placeholder="Rut/Nombre/Apellido/Email/Sexo/Edad" required>
                 </div>
                 <div class="col-4">
-                  <input class="btn btn-secondary" type="submit" name="enviar" value="Leer/Buscar">
+                  <input class="btn btn-primary" type="submit" name="enviar" value="Leer/Buscar">
+                  <a class="btn btn-secondary" type="button" href="buscar.php">Limpiar Busqueda</a>
                 </div>
               </div>
               <br><br>
@@ -86,140 +85,83 @@
                   <th scope="col">Edad</th>
                   <th scope="col">E-mail</th>
                   <th scope="col" colspan="2">Opciones</th>
-                  <th></th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td scope="row">
-
-                    <?php
+                <?php
                     if(isset($_GET['enviar'])){
                         $busqueda=$_GET['busqueda'];
                         $id=$_GET['ID'];
-                        $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda' or ");
+                        $consulta=$con->query("SELECT nombre, apellidos, rut, usuario, contraseña, direccion, sexo, DATE_FORMAT(nacimiento, '%d-%m-%Y') as nacimiento, sexo, extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email, ID  FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or email LIKE '$busqueda'");
 
-                        while($row=$consulta->fetch_array()){
-                            echo $row['nombre'];
+                        while($row=$consulta->fetch_array()){?>
+                      <tr>  
+                        <td scope="row">
+                            <?php echo $row['nombre']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['apellidos']; ?>
+                        </td>
+                        <td>    
+                          <?php echo $row['rut']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['usuario']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['direccion'];?>
+                        </td>
+                        <td>
+                          <?php echo $row['sexo'];?>
+                        </td>
+                        <td>
+                          <?php echo $row['nacimiento'];?>
+                        </td>
+                        <td>
+                          <?php echo $row['edad'];?>
+                        </td>
+                        <td>
+                          <?php echo $row['email'];?>
+                        </td>
+                        <td>
+                          <a href="actualizar.php?id=<?php echo $row['ID']?>" type="submit"class="editar-icon btn">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+                          <a href="delete.php?id=<?php echo $row['ID']?>" type="submit" class="eliminar-icon btn">
+                            <i class="bi bi-trash-fill"></i>
+                          </a>
+                        </td>
+                      </tr> 
+                      <?php
+                          }
+                      }else {
+                        while($row=mysqli_fetch_array($query)){
+                        ?>
+                        <tr>
+                          <td scope="row"><?php echo $row['nombre']; ?></td>
+                          <td><?php echo $row['apellidos']; ?></td>
+                          <td><?php echo $row['rut']; ?></td>
+                          <td><?php echo $row['usuario']; ?></td>
+                          <td><?php echo $row['direccion']; ?></td>
+                          <td><?php echo $row['sexo']; ?></td>
+                          <td><?php echo $row['nacimiento']; ?></td>
+                          <td><?php echo $row['edad']; ?></td>
+                          <td><?php echo $row['email']; ?></td>
+                          <td>
+                            <a href="actualizar.php?id=<?php echo $row['ID']?>" type="submit"class="editar-icon btn">
+                              <i class="bi bi-pencil-square"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <a href="delete.php?id=<?php echo $row['ID']?>" type="submit" class="eliminar-icon btn">
+                              <i class="bi bi-trash-fill"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      <?php    
                         }
-                    }
-                    ?>
-                    </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                        $busqueda=$_GET['busqueda'];
-                        $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                        while($row=$consulta->fetch_array()){
-                            echo $row['apellidos'];
-                        }
                       }
-                    ?>
-                  </td>
-                  <td>    
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['rut'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['usuario'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['direccion'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['sexo'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['nacimiento'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['edad'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){
-                              echo $row['email'];
-                          }
-                      }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                      if(isset($_GET['enviar'])){
-                          $busqueda=$_GET['busqueda'];
-                          $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or edad LIKE '$busqueda'");
-
-                          while($row=$consulta->fetch_array()){?>
-                              <a href="actualizar.php?id=<?php echo $row['ID']?>" type="submit"class="editar-icon btn">
-                                <i class="bi bi-pencil-square"></i>
-                              </a>
-                              <a href="delete.php?id=<?php echo $row['ID']?>" type="submit" class="eliminar-icon btn">
-                                <i class="bi bi-trash-fill"></i>
-                              </a>
-                              <?php
-                          }
-                      }
-                    ?>
-                </tr>
+                      ?>
               </tbody>
             </table>
           </div>
