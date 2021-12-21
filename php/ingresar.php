@@ -35,16 +35,14 @@
         <a class="btn btn-outline-light" aria-current="page" href="gestion.php?email=<?php echo $row['email']?>"><</a>&nbsp&nbsp
           <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
           &nbsp&nbsp
-          <?php 
-          }
-        ?>  
+    
         </div>
       </div>
     </div>
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
          
       <li class="nav-item">
-        <a class="nav-link active text-white" href="#">Ingresar&nbsp&nbsp&nbsp&nbsp</a>
+        <a class="nav-link active text-white" href="#"><?php echo $row['usuario']?>&nbsp&nbsp&nbsp&nbsp</a>
       </li>
       <li class="nav-item">
         <img src="../img/login_usuario.png" width="40" height="40" >
@@ -52,7 +50,7 @@
       <li class="nav-item">
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       </li>
-
+      
     </ul>
   </nav>
 </div><br>
@@ -99,24 +97,12 @@
             </div>
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Masculino">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Masculino
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Femenino">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Femenino
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  id="sexo" name="sexo" value="Otro">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Otro
-              </label>
+              <select class="form-select" name="sexo" id="state"  required>
+                <option selected="true">Seleccione Genero</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
@@ -127,7 +113,7 @@
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
             </div>
             <button type="submit" class="btn btn-secondary">Guardar</button>
-            <a href="gestion.html" class="btn btn-secondary">Volver</a>
+            <a href="gestion.php?email=<?php echo $row['email']?>" class="btn btn-secondary">Volver</a>
           </form>
         </div>
       </div>
@@ -135,7 +121,9 @@
 
   </div><br><br>
 
-
+    <?php 
+          }
+        ?>  
   <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">

@@ -6,6 +6,7 @@
     $query=mysqli_query($con,$sql);
     $sql1="SELECT * FROM formulario WHERE email LIKE '$email'";
     $query1=mysqli_query($con,$sql1);
+    $row=mysqli_fetch_array($query)
 ?>
 <!DOCTYPE html>
 <html lang="es">
