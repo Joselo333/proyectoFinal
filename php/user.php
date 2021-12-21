@@ -55,7 +55,7 @@
             
           </li>
           <li class="nav-item">
-            <img src="img/login_usuario.png" width="40" height="40" >
+            <img src="../img/login_usuario.png" width="40" height="40" >
           </li>
           <li class="nav-item">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

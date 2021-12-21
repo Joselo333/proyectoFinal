@@ -85,7 +85,7 @@
       <div class="col-md-auto">
         
         <a class="btn btn-secondary" href="ingresar.php?email=<?php echo $row['email']?>">Ingresar</a>
-        <a class="btn btn-secondary" href="buscar.php">Editar</a>
+        <a class="btn btn-secondary" href="buscar.php?email=<?php echo $row['email']?>">Editar</a>
       </div>
       <?php
           }

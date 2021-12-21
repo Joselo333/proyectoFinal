@@ -52,7 +52,7 @@
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
               <img 
-                src="img/comida2.jpg"
+                src="../img/comida2.jpg"
                 alt="login form"
                 class="img-fluid" style="border-radius: 1rem 0 0 1rem;" 
                 
@@ -64,7 +64,7 @@
                 <form action="validar.php" method="get">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
-                    <img src="img/icono_pestaña.png" width="32" height="32"> 
+                    <img src="../img/icono_pestaña.png" width="32" height="32"> 
                     <span class="h1 fw-bold mb-0">&nbspMarketPlace</span>
                   </div>
 

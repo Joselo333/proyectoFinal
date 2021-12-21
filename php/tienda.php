@@ -56,7 +56,7 @@
           while($row=mysqli_fetch_array($query)){
         ?>
         <div class="col-4">
-            <img src=<?php echo $row['img_tienda']?> class="icon-tienda bg-white">
+            <img src="../<?php echo $row['img_tienda']?>" class="icon-tienda bg-white">
         </div>
         <div class="col-8">
             <p class="p-titulo-medium"><?php echo $row['nombre_tienda']?></p>

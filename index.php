@@ -1,15 +1,16 @@
 <?php 
-    include("conexion.php");
+    include("php/conexion.php");
     $con=conectar();
-    
+
+
     $id=$_GET['id'];
-    
+
     $sql="SELECT * FROM tiendas";
     $query=mysqli_query($con,$sql);
-    
+
     $sql1="SELECT * FROM productos";
     $query1=mysqli_query($con,$sql1);
-    
+
     if($id>0){
       $sql3="SELECT *  FROM formulario WHERE ID ='$id'";
       $query3=mysqli_query($con,$sql3);  
@@ -40,10 +41,11 @@
 <body class="body-background">
   <?php
   if($query3){
-    
+
     while ($row=mysqli_fetch_array($query3)) {  
   ?>
     <!--barra navegación-->
+  <div class="fixed-top bg-dark">
     <div class="fixed-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
         <div class="container-fluid">
@@ -57,7 +59,7 @@
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="php/login.php">Login</a>
+            <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" aria-current="page" href="php/login.php">Salir</a>
             </div>
@@ -66,18 +68,19 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active text-white" href="php/user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
-            
+
           </li>
           <li class="nav-item">
             <img src="img/login_usuario.png" width="40" height="40" >
           </li>
-          <li class="nav-item">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           </li>
         </ul>
       </nav>
     </div>
+    </div>
     <br><br><br>
+    
  <?php
     }
   }elseif ($query2){?>
@@ -105,6 +108,7 @@
   </div>
   <br>
   <!--Fin barra de navegacion-->
+
   <?php
   }
   ?>
@@ -231,6 +235,7 @@
           while($row=mysqli_fetch_array($query)){
         ?>
           <div class="col-4 p-3">
+            <a href="tienda.php?id=<?php echo $row['id']?>" class="p-overlay text-deoration-none link-dark">
             <a href="php/tienda.php?id=<?php echo $row['id']?>" class="p-overlay text-deoration-none link-dark">
               <div class="card card-tienda">
                 <img src=<?php echo $row['img_tienda'] ?> class="card-img-top img-card-tienda" alt="...">
@@ -255,7 +260,6 @@
           </div>
         </div>
       </section>
-
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
           <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
@@ -272,10 +276,6 @@
           <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
         </ul>
       </footer>
-
-
-
-
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="facebook" viewBox="0 0 16 16">
           <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
@@ -289,14 +289,7 @@
       </svg>
   </div>
  
-
-
-
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
     
 </body>
 </html>

@@ -1,9 +1,11 @@
 <?php 
     include("conexion.php");
     $con=conectar();
-
+    $email = $_GET['email'];
     $sql="SELECT nombre, apellidos, rut, usuario, contraseña, direccion, sexo, DATE_FORMAT(nacimiento, '%d-%m-%Y') as nacimiento, sexo, extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email, ID FROM formulario";
     $query=mysqli_query($con,$sql);
+    $sql1="SELECT * FROM formulario WHERE email LIKE '$email'";
+    $query1=mysqli_query($con,$sql1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,9 +36,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="btn btn-outline-light" aria-current="page" href="gestion.html"><</a>&nbsp&nbsp
+              <?php
+              while($row=mysqli_fetch_array($query1)){
+              ?>
+              <a class="btn btn-outline-light" aria-current="page" href="gestion.php?email=<?php echo $row['email']?>"><</a>&nbsp&nbsp
               <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
-              
+              <?php
+                }
+              ?>
               
             </div>
           </div>
@@ -92,7 +99,7 @@
                     if(isset($_GET['enviar'])){
                         $busqueda=$_GET['busqueda'];
                         $id=$_GET['ID'];
-                        $consulta=$con->query("SELECT nombre, apellidos, rut, usuario, contraseña, direccion, sexo, DATE_FORMAT(nacimiento, '%d-%m-%Y') as nacimiento, sexo, extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email, ID  FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or email LIKE '$busqueda'");
+                        $consulta=$con->query("SELECT nombre, apellidos, rut, usuario, contraseña, direccion, sexo, DATE_FORMAT(nacimiento, '%d-%m-%Y') as nacimiento, sexo, extract(year from(current_date))-extract(year from(nacimiento)) as 'edad', email, ID  FROM formulario WHERE rut LIKE '$busqueda' or nombre LIKE '$busqueda' or apellidos LIKE '$busqueda' or usuario LIKE '$busqueda' or direccion LIKE '$busqueda' or sexo LIKE '$busqueda' or email LIKE '$busqueda' or extract(year from(current_date))-extract(year from(nacimiento)) LIKE '$busqueda' ");
 
                         while($row=$consulta->fetch_array()){?>
                       <tr>  
