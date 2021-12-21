@@ -42,7 +42,7 @@
         <?php 
           while($row=mysqli_fetch_array($query)){
         ?>
-        <a class="nav-link active text-white" href="user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
+        <a class="nav-link active text-white" href="#"><?php echo $row['usuario']?></a>
         
       </li>
       <li class="nav-item">
