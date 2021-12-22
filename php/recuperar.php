@@ -2,27 +2,34 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM formulario";
-    $query=mysqli_query($con,$sql);
-    $row=mysqli_fetch_array($query);
+$rut=$_GET['id'];
+
+
+$sql="SELECT * FROM formulario WHERE rut='$rut'";
+
+$query=mysqli_query($con,$sql);
+
+
+$row=mysqli_fetch_array($query);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
+    <title>Recuperar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
-    <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="../css/inicio.css">
-
-<body class="body-background">
-
-<!--barra navegación-->
+<br>
+<br>
+<body  >
+  <!--barra navegación-->
 <div class="fixed-top"><nav class="navbar navbar-expand-lg navbar-light bg-dark" >
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
@@ -41,63 +48,69 @@
     </div>
   </div>
 </nav></div><br>
+    <br>
+<style>
+    #centrar{
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 
-    <section class="vh-100" class="body-background o" >
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-xl-10">
-        <div class="card" style="border-radius: 1rem;">
-          <div class="row g-0">
-            <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img 
-                src="../img/comida2.jpg"
-                alt="login form"
-                class="img-fluid" style="border-radius: 1rem 0 0 1rem;" 
-                
-              />
-            </div>
-            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body p-4 p-lg-5 text-black">
-                
-                <form action="validar.php" method="get">
+<div class="container border-primary shadow p-3 mb-5 bg-body rounded" id="centrar" style="width: 900px" >
+    <div class="row" id="centrar">
+        <div class="col" id="centrar">
+            
+    <form action="" method="get" id="centrar">
+    <div class="mb-3">
+                    <h2>Recuperar Contraseña</h2>
+                    <hr><br>
+                    <input type="text" class="form-control" id="rut" name="busqueda" placeholder="INGRESE RUT">
+                    <input type="email" class="form-control" id="email" name="busqueda2" placeholder="INGRESE EMAIL">
+                    <input type="text" class="form-control" id="usuario" name="busqueda3" placeholder="INGRESE USUARIO">
 
-                  <div class="d-flex align-items-center mb-3 pb-1">
-                    <img src="../img/icono_pestaña.png" width="32" height="32"> 
-                    <span class="h1 fw-bold mb-0">&nbspMarketPlace</span>
+                    
+
                   </div>
+        <br>
+        <hr>
+        <a class="btn btn-secondary" href="login.php" >Volver</a>
 
-                  <h5 class="fw-bolder mb-3 pb-3" style="letter-spacing: 1px;">Iniciar sesión</h5>
+        <input class="btn btn-dark" type="submit" name="enviar" value="Recuperar">
 
-                  <div class="form-outline mb-4">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"/>
-                    <label class="form-label" for="form2Example17">Correo electrónico</label>
-                  </div>
+        
 
-                  <div class="form-outline mb-4">
-                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="123456789" />
-                    <label class="form-label" for="form2Example27">Contraseña</label>
-                  </div>
-
-                  <div class="pt-1 mb-4">
-                    <input class="btn btn-dark btn-lg btn-block" type="submit"></input>
-                  </div>
-
-                  <a href="recuperar.php" class="small text-muted" href="#!">¿Olvidaste contraseña?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">¿No tienes cuenta? <a href="registro.php" style="color: #393f81;">Registrate</a></p>
-                  
-                </form>
-
-              </div>
-            </div>
-          </div>
+        <br>
+        <br>
+    </form> 
+      
         </div>
-      </div>
     </div>
-  </div>
-</section>
+        <?php
 
-<div class="container" >
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+
+if(isset($_GET['enviar'])){
+    $busqueda=$_GET['busqueda'];
+    $busqueda2=$_GET['busqueda2'];
+    $busqueda3=$_GET['busqueda3'];
+    $consulta=$con->query("SELECT * FROM formulario WHERE rut LIKE '$busqueda'");
+    $consulta2=$con->query("SELECT * FROM formulario WHERE email LIKE '$busqueda2'");
+    $consulta3=$con->query("SELECT * FROM formulario WHERE usuario LIKE BINARY '$busqueda3'");
+
+    if($row=$consulta->fetch_array() and $row=$consulta2->fetch_array() and $row=$consulta3->fetch_array()){
+        echo "Su contraseña es: ";
+        echo $row['contraseña'];
+    }
+    else{
+        echo "ERROR: LOS DATOS INGRESADOS A CORRESPONDEN A NINGÜN USUARIO VÄLIDO";
+    }
+}
+?>
+</div>
+    
+<!-- Footer-->
+<br><br><br><br><br><br>
+<div class="container">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
@@ -114,10 +127,16 @@
       </ul>
     </footer>
 
+  </div>
 
-
+  
+  <!--Iconos Footer-->
 
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="bootstrap" viewBox="0 0 118 94">
+      <title>Bootstrap</title>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+    </symbol>
     <symbol id="facebook" viewBox="0 0 16 16">
       <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
     </symbol>
@@ -130,17 +149,5 @@
   </svg>
 
 
-
-
-
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-    
-  </body>
+</body>
 </html>
-
