@@ -1,6 +1,7 @@
 <?php
 include("conexion.php");
 $con=conectar();
+$idAdmin=$_GET['id'];
 
 $nombre=$_POST['nombre'];
 $apellidos=$_POST['apellidos'];
@@ -20,6 +21,10 @@ $query= mysqli_query($con,$sql);
 if($query){
     echo "<script> alert ('Su registro se ha completado satisfactoriamente.'); window.location='login.php' </script>";
 }else {
-    echo "<script> alert ('Usuario ya se encuentra registrado.'); window.location='registro.php' </script>";
-}
+    if($idAdmin==0){
+    echo "<script> alert ('Don Administrador: El usuario ya se encuentra registrado.'); window.location='ingresar.php?email=administrador@gmail.com' </script>";
+    }else{
+        echo "<script> alert ('El usuario ya se encuentra registrado.'); window.location='registro.php' </script>";
 
+    }
+}

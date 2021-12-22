@@ -42,9 +42,7 @@
               ?>
               <a class="btn btn-outline-light" aria-current="page" href="gestion.php?email=<?php echo $row['email']?>"><</a>&nbsp&nbsp
               <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
-              <?php
-                }
-              ?>
+              
               
             </div>
           </div>
@@ -54,11 +52,14 @@
             <a class="nav-link active text-white" href="#">Editar&nbsp&nbsp&nbsp&nbsp</a>
           </li>
           <li class="nav-item">
-            <img src="../img/login_usuario.png" width="40" height="40" >
+            <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
           </li>
           <li class="nav-item">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           </li>
+          <?php
+                }
+              ?>
         </ul>
       </nav>
     </div>

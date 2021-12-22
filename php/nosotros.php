@@ -1,3 +1,16 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+    $id=$_GET['id'];
+
+    if($id>0){
+      $sql3="SELECT *  FROM formulario WHERE ID ='$id'";
+      $query3=mysqli_query($con,$sql3);  
+    }else{
+      $sql2="SELECT *  FROM formulario";
+      $query2=mysqli_query($con,$sql2);
+    }  
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -7,9 +20,9 @@
     <title>¿Quiénes Somos Nosotros?</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
-    <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="../css/inicio.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +31,16 @@
     <title>Nosotros</title>
   </head>
 
-<body>
-<div style="background-color: #ffffeb;">
+<body class="body-background">
+<div >
 
+<?php
+  if($query3){
+
+    while ($row=mysqli_fetch_array($query3)) {  
+  ?>
     <!--barra navegación-->
+  <div class="fixed-top bg-dark">
     <div class="fixed-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
         <div class="container-fluid">
@@ -31,22 +50,61 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
-              &nbsp&nbsp
-              <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
-              &nbsp&nbsp
-              <a class="btn btn-outline-light" href="php/login.php">Login</a>
-              &nbsp&nbsp
-              <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php?id=<?php echo $row['ID']?>">Inicio</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="nosotros.php?id=<?php echo $row['ID']?>">Nosotros</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="checkout.php?id=<?php echo $row['ID']?>">Mi carro</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
             </div>
           </div>
         </div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
+
+          </li>
+          <li class="nav-item">
+            <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
+          </li>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          </li>
+        </ul>
       </nav>
     </div>
-    <br>
-    <!--Fin barra de navegacion-->
+    </div>
+    <br><br><br>
+    
+ <?php
+    }
+  }elseif ($query2){?>
+   <!--barra navegación-->
+   <div class="fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light " >
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="nosotros.php">Nosotros</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="login.php">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <br>
+  <!--Fin barra de navegacion-->
 
-
+  <?php
+  }
+  ?>
     <div class="container text-center fondo-container p-5 vm-100">
       <p class="p-titulo-big">¿Quiénes Somos?</p>
       <hr class="featurette-divider">
@@ -96,7 +154,7 @@
             <p class="lead">Recibe la mejor comida cocinada por los mejores productores locales, desde arroz chaufá hasta zapallitos rellenos</p>
           </div>
           <div class="col-md-5">
-            <img src="img/pizza.jpg" width="500" height="500">
+            <img src="../img/pizza.jpg" width="500" height="500">
             
           </div>
         </div>
@@ -109,7 +167,7 @@
             <p class="lead">Entregamos opciones de delivery o retiro en tienda para que puedas elegir como llevar tu pedido donde necesites, puedes elegir una preparación individual o satisfacer a todos tus comensales.</p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img src="img/amigos.jpg" class="img-fluid">
+            <img src="../img/amigos.jpg" class="img-fluid">
           </div>
         </div>
     
@@ -121,7 +179,7 @@
             <p class="lead">Somos una comunidad de emprendedores que vive en movimiento, con precios justos y la variedad que esperas.</p>
           </div>
           <div class="col-md-5">
-            <img src="img/reparto.jpg" height="500" width="500">
+            <img src="../img/reparto.jpg" height="500" width="500">
     
           </div>
         </div>

@@ -57,9 +57,9 @@
             <div class="navbar-nav">
             <a class="btn btn-outline-light" aria-current="page" href="index.php?id=<?php echo $row['ID']?>">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="php/nosotros.php?id=<?php echo $row['ID']?>">Nosotros</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
+            <a class="btn btn-outline-light" href="php/checkout.php?id=<?php echo $row['ID']?>">Mi carro</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" aria-current="page" href="php/login.php">Salir</a>
             </div>
@@ -71,7 +71,7 @@
 
           </li>
           <li class="nav-item">
-            <img src="img/login_usuario.png" width="40" height="40" >
+            <img src="<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
           </li>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           </li>
@@ -96,11 +96,9 @@
           <div class="navbar-nav">
             <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="php/nosotros.php">Nosotros</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="php/login.php">Login</a>
-            &nbsp&nbsp
-            <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
           </div>
         </div>
       </div>
@@ -235,8 +233,8 @@
           while($row=mysqli_fetch_array($query)){
         ?>
           <div class="col-4 p-3">
-            <a href="tienda.php?id=<?php echo $row['id']?>" class="p-overlay text-deoration-none link-dark">
-            <a href="php/tienda.php?id=<?php echo $row['id']?>" class="p-overlay text-deoration-none link-dark">
+            <a href="php/tienda.php?id=<?php echo $row['id']?>&id_user=<?php echo $id?>" class="p-overlay text-deoration-none link-dark">
+            <a href="php/tienda.php?id=<?php echo $row['id']?>&id_user=<?php echo $id?>" class="p-overlay text-deoration-none link-dark">
               <div class="card card-tienda">
                 <img src=<?php echo $row['img_tienda'] ?> class="card-img-top img-card-tienda" alt="...">
                 <div class="card-img-overlay overlay-tienda d-flex align-items-center justify-content-center">
@@ -252,9 +250,9 @@
           <div class="col mb-5">
             <div class="card">
               <div class="card-body">
-                <p class="h5 text-center">
-                 
-                </p>
+                <p class="h5 text-center p-overlay">
+                  Bienvenido al Marketplace mas exitoso de copiapo.
+                </p>  
               </div>
             </div>
           </div>

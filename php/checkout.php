@@ -1,3 +1,27 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+    $id=$_GET['id'];
+    $id_item=$_GET['id_item'];
+
+    $sql="SELECT * FROM items WHERE id_item = '$id_item'";
+    $query=mysqli_query($con,$sql);
+
+    $sql1="SELECT nombre_item, descripcion_item, precio_item FROM items a,proceso_compra b WHERE a.id_item = b.id_item and b.id_user = $id";
+    $query1=mysqli_query($con,$sql1);
+    $filas=mysqli_num_rows($query1);
+    $total=0;
+    if($id>0){
+      $sql3="SELECT * FROM formulario WHERE ID ='$id'";
+      $query3=mysqli_query($con,$sql3);
+      $query4=mysqli_query($con,$sql3);
+      $query5=mysqli_query($con,$sql3);
+       $filas1=mysqli_num_rows($query3);
+    }else{
+      $sql2="SELECT *  FROM formulario";
+      $query2=mysqli_query($con,$sql2);
+    }  
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,14 +31,14 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title>Pago</title>
-    <link rel="icon" href="img/icono_pestaña.png">
-
+    <link rel="icon" href="../img/icono_pestaña.png">
+     <link rel="stylesheet" href="../css/inicio.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
 
     
 
     <!-- Bootstrap core CSS -->
-<link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -34,12 +58,56 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="css/form-validation.css" rel="stylesheet">
+    <link href="../css/form-validation.css" rel="stylesheet">
   </head>
   <body class="bg-light">
 
-      <!--barra navegación-->
+  <?php
+  if($query3){
+     while ($row=mysqli_fetch_array($query3)) {  
+  ?>
+    <!--barra navegación-->
   <div class="fixed-top bg-dark">
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php?id=<?php echo $row['ID']?>">Inicio</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="nosotros.php?id=<?php echo $row['ID']?>">Nosotros</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="checkout.php?id=<?php echo $row['ID']?>">Mi carro</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
+
+          </li>
+          <li class="nav-item">
+            <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
+          </li>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+    <br><br><br>
+    
+ <?php
+    }
+  }elseif ($query2){?>
+   <!--barra navegación-->
+   <div class="fixed-top bg-dark">
     <nav class="navbar navbar-expand-lg navbar-light " >
       <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
@@ -48,13 +116,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="btn btn-outline-light" aria-current="page" href="index.php">Inicio</a>
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="nosotros.php">Nosotros</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="php/login.php">Login</a>
-            &nbsp&nbsp
-            <a class="btn btn-outline-light" href="checkout.html">Mi carro</a>
+            <a class="btn btn-outline-light" href="login.php">Login</a>
           </div>
         </div>
       </div>
@@ -62,56 +128,51 @@
   </div>
   <br>
   <!--Fin barra de navegacion-->
-    
+
+  <?php
+  }
+  ?>
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="img/icono_pestaña.png" alt="" width="72" height="72">
+      <img class="d-block mx-auto mb-4" src="../img/icono_pestaña.png" alt="" width="72" height="72">
       <h2>Resumen compra</h2>
       <p class="lead">Complete su pedido</p>
     </div>
-
+    
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Carrito</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          <span class="badge bg-primary rounded-pill"><?php echo $filas?></span>
         </h4>
-        <ul class="list-group mb-3">
+        <ul class="list-group">
+              <?php
+                while($row=mysqli_fetch_array($query1)){
+                  $total+=$row['precio_item'];
+              ?>
+                
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Churrasco italiano</h6>
-              <small class="text-muted">Brief description</small>
+              <h6 class="my-0"><?php echo $row['nombre_item']?></h6>
+              <small class="text-muted"><?php echo $row['descripcion_item']?></small>
             </div>
-            <span class="text-muted">$12.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Bolitas de arroz</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$8.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Completo</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$5.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Código promocional</h6>
-              <small>COMIDAFACILITA</small>
-            </div>
-            <span class="text-success">−$5.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (CLP)</span>
-            <strong>$20.000</strong>
+            <span class="text-muted"><?php echo $row['precio_item']?></span>
           </li>
         </ul>
-
+        <?php
+              }
+            ?>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div class="col-6">
+              <p class="text-end h6">TOTAL:</p>
+            </div>
+            <div class="col-6">
+              <p class="text-end h6"><?php echo $total?></p>
+            </div>
+            <span class="text-muted"><?php echo $row['precio_item']?></span>
+          </li>
+        </ul>
         <form class="card p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Código promocional">
@@ -119,13 +180,18 @@
           </div>
         </form>
       </div>
+      
       <div class="col-md-7 col-lg-8">
+      <?php
+        if($filas1==1){
+          while ($row=mysqli_fetch_array($query4)){  
+      ?>
         <h4 class="mb-3">Información de pago</h4>
-        <form class="needs-validation" novalidate>
+        <form class="" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo $row['nombre']?>" required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -133,17 +199,14 @@
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="<?php echo $row['apellidos']?>" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
             </div>
-
-        
-
             <div class="col-12">
               <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-              <input type="email" class="form-control" id="email" placeholder="correo@example.com">
+              <input type="email" class="form-control" id="email" placeholder="correo@example.com" value="<?php echo $row['email']?>">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -151,15 +214,54 @@
 
             <div class="col-12">
               <label for="address" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="address" placeholder="Copayapu 123" required>
+              <input type="text" class="form-control" id="address" placeholder="Copayapu 123" value="<?php echo $row['direccion']?>" required>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
             </div>
 
-        
+          <?php
+            }  
+          }elseif($query2){
+          ?>
+            <div class="col-md-7 col-lg-8">
+              <h4 class="mb-3">Información de pago</h4>
+              <form class="reiniciar_compra.php?id=<?php echo $id?>" novalidate>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="firstName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Juan" value="" required>
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+            </div>
 
-            
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Perez" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+              <input type="email" class="form-control" id="email" placeholder="correo@example.com" value="">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="address" placeholder="Copayapu 123" value="" required>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+          <?php
+            }
+          ?>  
 
             
           <hr class="my-4">
@@ -170,64 +272,16 @@
             <input type="checkbox" class="form-check-input" id="save-info">
             <label class="form-check-label" for="save-info">Guardar esta información para una próxima vez</label>
           </div>
-
+            
           <hr class="my-4">
-
-          <h4 class="mb-3">Forma de pago</h4>
-
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-              <label class="form-check-label" for="credit">Tarjeta de crédito</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="debit">Tarjeta de débito</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Name en tarjeta</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required>
-              <small class="text-muted">Full name as displayed on card</small>
-              <div class="invalid-feedback">
-                Name on card is required
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Número tarjeta crédito</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
-              <div class="invalid-feedback">
-                Credit card number is required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Expiración</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-              <div class="invalid-feedback">
-                Expiration date required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-              <div class="invalid-feedback">
-                Security code required
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4">
-
-          <button class="w-100 btn btn-secondary btn-lg" type="submit">Pagar</button>
+            <?php 
+              while ($row=mysqli_fetch_array($query5)) {
+            ?>
+          <a href="reiniciar_compra.php?id=<?php echo $row['ID']?>"class="w-100 btn btn-secondary btn-lg">Pagar</a>
+            <?php 
+              }
+            ?>   
+          
         </form>
       </div>
     </div>
@@ -277,8 +331,8 @@
 
 
 
-    <script src="boot/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../boot/assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      <script src="form-validation.js"></script>
+      <script src="../js/form-validation.js"></script>
   </body>
 </html>

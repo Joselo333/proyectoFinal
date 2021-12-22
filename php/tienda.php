@@ -2,11 +2,18 @@
     include("conexion.php");
     $con=conectar();
     $id=$_GET['id']; 
-
+    $id_user=$_GET['id_user']; 
     $sql="SELECT * FROM tiendas WHERE id = '$id'";
     $query=mysqli_query($con,$sql);
     $sql1="SELECT * FROM items WHERE id_tienda = '$id'";
     $query1=mysqli_query($con,$sql1);
+    if($id_user>0){
+      $sql2="SELECT * FROM formulario WHERE ID ='$id_user'";
+      $query2=mysqli_query($con,$sql2);  
+    }else{
+      $sql3="SELECT * FROM formulario";
+      $query3=mysqli_query($con,$sql3);
+    }  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +34,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
 </head>
 <body class="body-background">
+<?php
+  if($query2){
+
+    while ($row=mysqli_fetch_array($query2)) {
+  ?>
     <!--barra navegación-->
   <div class="fixed-top bg-dark">
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="btn btn-outline-light" aria-current="page" href="../index.php?id=<?php echo $row['ID']?>">Inicio</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="nosotros.php?id=<?php echo $row['ID']?>">Nosotros</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" href="checkout.php?id=<?php echo $row['ID']?>">Mi carro</a>
+            &nbsp&nbsp
+            <a class="btn btn-outline-light" aria-current="page" href="login.php">Salir</a>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="user.php?id=<?php echo $row['ID']?>"><?php echo $row['usuario']?></a>
+
+          </li>
+          <li class="nav-item">
+            <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
+          </li>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+    <br><br><br>
+    
+ <?php
+    }
+  }elseif ($query3){?>
+   <!--barra navegación-->
+   <div class="fixed-top bg-dark">
     <nav class="navbar navbar-expand-lg navbar-light " >
       <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">🛒MarketPlace</a>
@@ -39,7 +91,7 @@
           <div class="navbar-nav">
             <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="../nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="nosotros.php">Nosotros</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="login.php">Login</a>
           </div>
@@ -49,12 +101,15 @@
   </div>
   <br>
   <!--Fin barra de navegacion-->
+
+  <?php
+  }
  
+    while ($row=mysqli_fetch_array($query)) {  
+  ?>
   <div class="container" >
     <div class="row mt-5 d-flex align-items-center">
-        <?php
-          while($row=mysqli_fetch_array($query)){
-        ?>
+       
         <div class="col-4">
             <img src="../<?php echo $row['img_tienda']?>" class="icon-tienda bg-white">
         </div>
@@ -68,6 +123,7 @@
     <div class="row container-card-item">
       
         <?php
+          if($query2){
             while($row=mysqli_fetch_array($query1)){
         ?>
             <div class="col-6">
@@ -77,10 +133,15 @@
                             <img src=<?php echo $row['img_item']?> class="img-fluid img-item rounded-start">
                         </div>
                         <div class="col-md-6">
-                            <div class="card-body text-center d">
+                            <div class="card-body text-center ">
                               <h5 class="card-title-carrusel p-titulo-small"><?php echo $row['nombre_item']?></h5>
                               <br>
                               <p class="card-text p-titulo-small"><?php echo $row['precio_item']?></p>
+                            </div>
+                            <div class="card-footer">
+                              <a href="transicion.php?id_item=<?php echo $row['id_item']?>&id_user=<?php echo $id_user?>" class="btn">
+                                <i class="bi bi-cart-plus-fill"></i>
+                              </a>
                             </div>
                         </div>
                     </div>
@@ -88,6 +149,27 @@
             </div>
             <?php
                 }
+            }else{
+              while($row=mysqli_fetch_array($query1)){?>
+              <div class="col-6">
+                <div class="card card-item mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src=<?php echo $row['img_item']?> class="img-fluid img-item rounded-start">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center ">
+                              <h5 class="card-title-carrusel p-titulo-small"><?php echo $row['nombre_item']?></h5>
+                              <br>
+                              <p class="card-text p-titulo-small"><?php echo $row['precio_item']?></p>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+              }
+            }
             ?>
     </div>
 

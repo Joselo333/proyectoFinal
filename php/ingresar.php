@@ -29,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <?php 
+        <?php
           while($row=mysqli_fetch_array($query)){
         ?>
         <a class="btn btn-outline-light" aria-current="page" href="gestion.php?email=<?php echo $row['email']?>"><</a>&nbsp&nbsp
@@ -45,7 +45,7 @@
         <a class="nav-link active text-white" href="#"><?php echo $row['usuario']?>&nbsp&nbsp&nbsp&nbsp</a>
       </li>
       <li class="nav-item">
-        <img src="../img/login_usuario.png" width="40" height="40" >
+        <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" >
       </li>
       <li class="nav-item">
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -70,14 +70,14 @@
         <h5 class="display-1 text-dark text-center">Ingreso</h5>
         <div class="col-3"></div>
         <div class="col-6">
-          <form action="insertar.php" method="POST">
+          <form action="insertar.php?id=<?php echo $row['ID']?>" method="POST">
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Nombre:</label>
-              <input type="text" class="form-control" id="nombre" name="nombre">
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Apellidos:</label>
-              <input type="text" class="form-control" id="apellidos" name="apellidos">
+              <input type="text" class="form-control" id="apellidos" name="apellidos" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">RUT:</label>
@@ -85,15 +85,15 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Usuario:</label>
-              <input type="text" class="form-control" id="usuario" name="usuario">
+              <input type="text" class="form-control" id="usuario" name="usuario" required>
             </div> 
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="contraseña" name="contraseña">
+              <input type="password" class="form-control" id="contraseña" name="contraseña" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Dirección:</label>
-              <input type="text" class="form-control" id="direccion" name="direccion">
+              <input type="text" class="form-control" id="direccion" name="direccion" required>
             </div>
             <div class="mb-3">
               <label for="flexRadioDefault1" class="form-label">Sexo:</label>
@@ -106,11 +106,11 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Fecha nacimiento:</label>
-              <input type="date" class="form-control" id="nacimiento" name="nacimiento">
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" required>
             </div> 
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
             </div>
             <button type="submit" class="btn btn-secondary">Guardar</button>
             <a href="gestion.php?email=<?php echo $row['email']?>" class="btn btn-secondary">Volver</a>

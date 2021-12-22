@@ -45,7 +45,7 @@
           <div class="navbar-nav">
             <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
             &nbsp&nbsp
-            <a class="btn btn-outline-light" href="../nosotros.html">Nosotros</a>
+            <a class="btn btn-outline-light" href="nosotros.php">Nosotros</a>
             &nbsp&nbsp
             <a class="btn btn-outline-light" href="login.php">Login</a>
           </div>

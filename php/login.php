@@ -20,7 +20,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
     <link rel="stylesheet" href="../css/inicio.css">
 
-<body style="background-color: #ffffeb;">
+<body class="body-background">
 
 <!--barra navegación-->
 <div class="fixed-top"><nav class="navbar navbar-expand-lg navbar-light bg-dark" >
@@ -34,17 +34,15 @@
         
         <a class="btn btn-outline-light" aria-current="page" href="../index.php">Inicio</a>
         &nbsp&nbsp
-        <a class="btn btn-outline-light" href="../nosotros.html">Nosotros</a>
+        <a class="btn btn-outline-light" href="nosotros.php">Nosotros</a>
         &nbsp&nbsp
         <a class="btn btn-outline-light" href="login.php">Login</a>
-        &nbsp&nbsp
-            <a class="btn btn-outline-light" href="../checkout.html">Mi carro</a>
       </div>
     </div>
   </div>
 </nav></div><br>
 
-    <section class="vh-100" style="background-color: #ffffeb;">
+    <section class="vh-100" class="body-background o" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">

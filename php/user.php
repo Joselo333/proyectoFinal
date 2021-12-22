@@ -20,6 +20,7 @@
     <link href="boot/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
     <link rel="stylesheet" href="../css/tiendas.css">
+    <link rel="stylesheet" href="../css/inicio.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +28,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
 </head>
 <body class="body-background">
-    <!--barra navegación-->
   <!--barra navegación-->
   <?php 
     while($row=mysqli_fetch_array($query)){
@@ -55,7 +55,7 @@
             
           </li>
           <li class="nav-item">
-            <img src="../img/login_usuario.png" width="40" height="40" >
+            <img src="../<?php echo $row['img_usuario']?>" width="40" height="40" class="img-perfil">
           </li>
           <li class="nav-item">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -65,10 +65,52 @@
     </div>
     <br><br><br>
   <!--Fin barra de navegacion-->
-  <!--Fin barra de navegacion-->
  
-    <div class="container" >
-    
+    <div class="container container-user" >
+      <div class="row p-5">
+        <div class="col-4 mb-3">
+          <img src="../<?php echo $row['img_usuario']?>" class="img-fluid mb-3">
+        </div>
+        <div class="col-8 mb-3">
+          <p class="p-titulo-medium">Hola, <?php echo $row['nombre']?> <?php echo $row['apellidos']?> </p>
+          <p class="p-titulo-small">o mejor dicho <?php echo $row['usuario']?> </p>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-6 mt-5">
+        <p>
+          <button class="btn p-overlay-small" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Historial de compras
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample"><p class="p-overlay-tiny">
+          <div class="card card-body">
+            
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Numero de compra</th>
+                    <th scope="col">Monto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                  while ($row=mysqli_fetch_array($query1)) {
+                ?>
+                  <tr>
+                    <td class="h6"><?php echo $row['id_compra']?></td>
+                    <td class="h6">$<?php echo $row['monto']?></td>
+                  </tr>
+                <?php
+                  }
+                ?>
+                </tbody>
+              </table>
+          </div>
+        </div>
+        </div>
+        <div class="col-2"></div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
     </div>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -109,8 +151,8 @@
 
 
   <?php 
-                }
-            ?>
+    }
+  ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

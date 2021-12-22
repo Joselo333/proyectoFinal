@@ -88,3 +88,43 @@ body{
     font-weight: bold;
     color: #442220;
 }
+.p-overlay-small{
+    font-family: 'Concert One', cursive;
+    font-size: 25px;
+    font-weight: bold;
+    color: #442220;
+}
+.p-overlay-tiny{
+    font-family: 'Concert One', cursive;
+    font-size: 15px;
+    font-weight: bold;
+    color: #442220;
+}
+.img-perfil{
+    clip-path: circle(41.9% at 50% 50%);
+    border-radius: 100px;
+    border: solid #ffffff 2px;
+}
+.img-perfil-big{
+    
+    border: solid #000000 2px;
+    width: 200px;
+    height: 200px;
+}
+.o{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    border: solid rgba(255, 255, 255, 0.5) 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+.container-user{
+    border: solid rgba(255, 255, 255, 0.5) 1px;
+    background-color: rgba(255, 255, 255, 0.301);
+    border-radius: 10px 10px 10px 10px ;
+    color: #967D69;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    backdrop-filter: blur(20px);
+}
